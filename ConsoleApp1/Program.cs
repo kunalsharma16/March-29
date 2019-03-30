@@ -31,6 +31,7 @@ namespace C0727250
 
     class Network
     {
+        private static object i;
         ArrayList WebPageContents = new ArrayList();
         public static async Task Download()
         {
@@ -39,7 +40,7 @@ namespace C0727250
             // Console.WriteLine(data);
             foreach (var line in data)
             {
-
+                WebPageContents.Add(i);
             }
         }
     }
