@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Collections;
+using System.Net.Http;
 
 namespace C0727250
 
@@ -20,11 +22,25 @@ namespace C0727250
         }
 
 
-        static void Download()
+        static async void Download()
         {
-            Thread.Sleep(3000);
-            Console.WriteLine("Download Complete");
+            await Network.Download();
+            Console.WriteLine("Download complete");
         }
+    }
 
+    class Network
+    {
+        ArrayList WebPageContents = new ArrayList();
+        public static async Task Download()
+        {
+            HttpClient client = new HttpClient();
+            String data = await client.GetStringAsync("http://torontopubliclibrary.ca");
+            // Console.WriteLine(data);
+            foreach (var line in data)
+            {
+
+            }
+        }
     }
 }
